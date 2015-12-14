@@ -19,9 +19,8 @@ $dtCommit = [datetime]::Parse($info[1].Substring(0, 25)).ToUniversalTime()
 $sDateCommit =$dtCommit.ToString('o')
 
 $message = (& svnlook.exe log -r $rev $repo)
-
-#$files = $changes | where { $_ -match "\s*(.)\s+(.+)" } | foreach { $matches[2] }
 $bugzIds = [regex]::matches($message, '\s*BugzID\s*[: ]+(\d+)') | % { $_.Groups[1].Value }
+$sMessage = $message -join "`n"
 
 $bugzIds | foreach {
     $ixBug = $_
