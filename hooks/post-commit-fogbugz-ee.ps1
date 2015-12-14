@@ -37,7 +37,7 @@ $bugzIds | foreach {
       "token" = $sToken
     }
     
-    $url = "$cFbUrl/default.asp?pg=pgPluginRaw&ixPlugin=$ixPluginId"
+    $url = "$cFbUrl/default.asp?pg=pgPluginRaw&sPluginId=$sPluginId"
     try {
         $tmp = Invoke-WebRequest -Uri $url -Method GET -Body $params -TimeoutSec 30 -ErrorAction SilentlyContinue
     }
